@@ -1,6 +1,6 @@
 from decouple import config
 import pydgraph
-from utilsService.log import *
+from service.log import *
 import json
 
 
