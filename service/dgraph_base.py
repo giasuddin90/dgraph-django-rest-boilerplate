@@ -14,8 +14,9 @@ class DgraphBase(object):
         connect with dgraph server
         """
         try:
-            client_stub = pydgraph.DgraphClientStub.from_slash_endpoint(cls.dgraph_url, cls.dgraph_key)
-            # client_stub = pydgraph.DgraphClientStub('localhost:9080')
+            # this line will be used for cloud connection
+            # client_stub = pydgraph.DgraphClientStub.from_slash_endpoint(cls.dgraph_url, cls.dgraph_key)
+            client_stub = pydgraph.DgraphClientStub(cls.dgraph_url)
             client = pydgraph.DgraphClient(client_stub)
             return client
         except Exception as ex:
