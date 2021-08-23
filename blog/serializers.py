@@ -5,7 +5,7 @@ from rest_framework import serializers
 
 class BlogBaseSerializer(serializers.Serializer):
     """
-    data validation and serialization
+    This serialer is base that will be used in other serializer
     """
     title = serializers.CharField(allow_null=False)
     description = serializers.CharField(allow_null=False)
@@ -14,12 +14,16 @@ class BlogBaseSerializer(serializers.Serializer):
 
 class BlogCreateSerializer(BlogBaseSerializer):
     """
-    data validation and serialization
+    This serialization class will be used for creating blog
     """
     category = serializers.CharField()
 
 
 class BlogSerializer(BlogBaseSerializer):
+    """
+    This serialization class will be used for edit blog
+    """
+
     uid = serializers.CharField(allow_null=False)
     category = serializers.CharField()
 
