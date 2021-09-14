@@ -26,6 +26,22 @@ class DgraphBase(object):
             return client
 
     @classmethod
+    def cloud_db_connection(cls):
+        """
+        connect with dgraph server
+        """
+        try:
+            # This function will connect dgraph clould db
+            client_stub = pydgraph.DgraphClientStub.from_slash_endpoint(cls.dgraph_url, cls.dgraph_key)
+            client = pydgraph.DgraphClient(client_stub)
+            return client
+        except Exception as ex:
+            # logger
+            Log.general_log(ex, "dgraph_connection_error")
+            client = None
+            return client
+
+    @classmethod
     def schema_alter(cls, schema):
         client = cls.db_connection()
         try:
